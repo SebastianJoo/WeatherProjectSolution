@@ -1,0 +1,16 @@
+﻿@page
+@model WeatherProject.Pages.TemperatureDifferenceModel
+@using WeatherProject.Services;
+@{
+}
+<h2>Temperaturskillnad</h2>
+<p>Sorterat på då inne- och yttertemperaturen skiljt sig som mest och som minst.</p>
+<ol>
+    @{
+        var tempDiffList = SqlWeatherData.GetTemperatureDifference();
+        foreach (var day in tempDiffList)
+        {
+            <li class="list-group-item">@day</li>
+        }
+    }
+</ol>

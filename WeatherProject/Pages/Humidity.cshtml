@@ -1,0 +1,30 @@
+﻿@page
+@model WeatherProject.Pages.Shared.HumidityModel
+@using WeatherProject.Services;
+@{
+}
+<h2>Luftfuktighet</h2>
+<p>Sorterad från torraste till fuktigaste dagen enligt medelluftfuktighet per dag. </p>
+<div class="container">
+    <form method="post">
+        <div class="input-group">
+            <select class="custom-select" id="inputGroupSelect04" name="number" asp-for="Number">
+                <option selected>Välj...</option>
+                <option value="1">Inne</option>
+                <option value="2">Ute</option>
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Välj</button>
+            </div>
+        </div>
+        <ol>
+            @{
+                var humidityList = SqlWeatherData.GetLowestHumidity(Model.Location) ;
+                foreach (var day in humidityList)
+                {
+                    <li class="list-group-item">Luftfuktighet: @day.Humidity%     Datum: @day.DateAndTime.ToShortDateString() </li>
+                }
+            }
+        </ol>
+        </form>
+</div>

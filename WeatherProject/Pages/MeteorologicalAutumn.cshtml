@@ -1,0 +1,12 @@
+﻿@page
+@model WeatherProject.Pages.MeteorologicalAutumnModel
+@using WeatherProject.Services;
+@{
+    var autumn = SqlWeatherData.GetMeteorologicalAutumn();
+
+}
+<h2>Meteorologisk Höst</h2>
+<p>Datum för meteorologisk höst:</p>
+<div class="container">
+    <h4>@autumn.ToShortDateString()</h4>
+</div>

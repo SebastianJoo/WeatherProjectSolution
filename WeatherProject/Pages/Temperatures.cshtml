@@ -1,0 +1,30 @@
+﻿@page
+@model WeatherProject.Pages.TemperaturerModel
+@using WeatherProject.Services;
+@{
+}
+<h2>Temperaturer</h2>
+<p>Data sorterad från varmaste till kallaste dagen.</p>
+<div class="container">
+    <form method="post">
+        <div class="input-group">
+            <select class="custom-select" id="inputGroupSelect04" name="number"asp-for="Number">
+                <option selected>Välj...</option>
+                <option value="1" >Inne</option>
+                <option value="2">Ute</option>
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Välj</button>
+            </div>
+        </div>
+        <ol>
+            @{
+                var temperatureData = SqlWeatherData.GetHighestTemps(Model.Location);
+                foreach (var temperature in temperatureData)
+                {
+                    <li class="list-group-item">Temperatur: @temperature.Temp°     Datum: @temperature.DateAndTime.ToShortDateString() </li>
+                }
+            }
+        </ol>
+    </form>
+</div>

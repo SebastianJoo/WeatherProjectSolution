@@ -1,0 +1,16 @@
+﻿@page
+@using WeatherProject.Models;
+@using WeatherProject.Services;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Projektarbete VäderData</h1>
+    <p>Klicka på knappen för att fylla databasen.</p>
+    <p>@Model.Message</p>
+    <form method="post">
+        <button class="btn btn-primary">Fyll Databas!</button>
+    </form>
+</div>

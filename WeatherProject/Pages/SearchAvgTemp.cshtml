@@ -1,0 +1,24 @@
+﻿@page
+@model WeatherProject.Pages.SearchAvgTempModel
+@using WeatherProject.Services;
+@{
+    var minDate = SqlWeatherData.MinDate().ToShortDateString();
+
+    var maxDate = SqlWeatherData.MaxDate().ToShortDateString();
+
+}
+<h2>Medeltemperatur</h2>
+<p>Sök medeltemperatur för valt datum.</p>
+<div class="container">
+    <div class="input-group">
+        <form method="post">
+            Datum: <input type="date" class="form-control" value="2016-11-13" min="@minDate" max="@maxDate" asp-for="Date" />
+            <br />
+            <button class="btn btn-primary" type="submit">Sök Medeltemperatur</button>
+            <br />
+            <br />
+            <h5>Medeltemperatur Inne: @Model.AverageTempInside° </h5>
+            <h5>Medeltemperature Ute: @Model.AverageTempOutside°</h5>
+        </form>
+    </div>
+</div>

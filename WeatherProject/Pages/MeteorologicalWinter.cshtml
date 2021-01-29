@@ -1,0 +1,13 @@
+﻿@page
+@model WeatherProject.Pages.MeteorologicalWinterModel
+@using WeatherProject.Services;
+@{
+    var winter = SqlWeatherData.GetMeteorologicalWinter();
+}
+<h2>Meteorologisk vinter</h2>
+<p>Meteorologisk vinter infinner sig inte enligt datan. 
+    (Om man castar till int gör den det, gjorde det på datan nedan.)</p>
+<p>Datum för meteorologisk vinter:</p>
+<div class="container">
+    <h4>@winter.ToShortDateString()</h4>
+</div>

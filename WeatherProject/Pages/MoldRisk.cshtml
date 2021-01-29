@@ -1,0 +1,30 @@
+﻿@page
+@model WeatherProject.Pages.MoldRiskModel
+@using WeatherProject.Services;
+@{
+}
+<h2>Mögelrisk</h2>
+<p>Mögelrisk sorterad på minst till störst risk för mögel.</p>
+<div class="container">
+    <form method="post">
+        <div class="input-group">
+            <select class="custom-select" id="inputGroupSelect04" name="number" asp-for="Number">
+                <option selected>Välj...</option>
+                <option value="1">Inne</option>
+                <option value="2">Ute</option>
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Välj</button>
+            </div>
+        </div>
+        <ol>
+            @{
+                var moldRiskList = SqlWeatherData.GetMoldRisk(Model.Location);
+                foreach (var day in moldRiskList)
+                {
+                    <li class="list-group-item">Mögelrisk: @day.MoldRisk%     Datum: @day.DateAndTime.ToShortDateString() </li>
+                }
+            }
+        </ol>
+    </form>
+</div>
