@@ -334,8 +334,8 @@ namespace WeatherProject.Services
                         }
                         i += counter;
                         index = 0;
+                        balconyOpen.Add(new Balcony(insideTempList[0].DateAndTime.Date, openTime, openedAmount));
                     }
-                    balconyOpen.Add(new Balcony(insideTempList[0].DateAndTime.Date, openTime, openedAmount));
                 }
                 return balconyOpen
                     .OrderByDescending(b => b.DoorOpenTime)
